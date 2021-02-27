@@ -1,0 +1,21 @@
+.Product{
+    display: flex;
+    border-bottom: 2px solid lightgrey;
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+}
+.product-img{
+    margin-right: 15px;
+}
+.product-details{
+   
+}
+.shop-button{
+    background-color: lightsalmon;
+    width: 150px;
+    height: 30px;
+    border:none;
+    cursor: pointer;
+}
