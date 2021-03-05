@@ -19,7 +19,7 @@ const Product = (props) => {
                 <p><small>${price}</small></p>
                 <p><small>Only {stock} left in stock - Order Soon</small></p>
                 { props.showAddToCart && <button className="shop-button" onClick={() => props.HeandlerAddProduct(props.product)}>
-                    <FontAwesomeIcon icon={faShoppingCart} /> Add to Card</button>}
+                    <FontAwesomeIcon icon={faShoppingCart} /> Add to Cart</button>}
             </div>
 
         </div>
