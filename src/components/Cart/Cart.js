@@ -32,9 +32,9 @@ const Cart = (props) => {
             <p><small>Shipping Cost: ${shipping}</small></p>
             <p><small>Tax: ${tax}</small></p>
             <p>Total Price: ${grandTotal}</p>
-            <Link to="/review">
-                <button className="btn btn-success">Review Order</button>
-            </Link>
+            {
+                props.children
+            }
         </div>
     );
 };

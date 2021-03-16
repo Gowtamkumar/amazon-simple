@@ -1,0 +1,18 @@
+.App {
+    text-align: center;
+  background-color: aquamarine;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:50px
+  
+  }
+  
+  .main-container{
+    background-color: beige;
+    max-width: 500px;
+    padding:30px
+    
+  }
+  
+  
