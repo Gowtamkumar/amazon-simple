@@ -10,7 +10,7 @@ const Shipment = () => {
   const onSubmit = data => {
     const savedCart = getDatabaseCart()
     const orderDetails = { ...LoggedInUser, products: savedCart, Shipment: data, OrderTime: new Date() }
-    fetch('http://localhost:5000/addOrder', {
+    fetch('https://peaceful-inlet-79182.herokuapp.com/addOrder', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
