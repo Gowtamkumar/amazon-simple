@@ -1,28 +1,46 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../../App';
+import { getDatabaseCart, processOrder } from '../../utilities/databaseManager';
 import './Shipment.css'
 const Shipment = () => {
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const [LoggedInUser, setLoggedInUser] = useContext(UserContext);
- 
-  const onSubmit = data => console.log("submit form",data);
 
-  console.log(watch("example")); 
+  const onSubmit = data => {
+    const savedCart = getDatabaseCart()
+    const orderDetails = { ...LoggedInUser, products: savedCart, Shipment: data, OrderTime: new Date() }
+    fetch('http://localhost:5000/addOrder', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(orderDetails)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data) {
+          processOrder()
+          alert("Order Complete")
+        }
+      })
+
+  };
+
 
   return (
-    <form  className="ship-form" onSubmit={handleSubmit(onSubmit)}>
-      
-      <input name="name" defaultValue={LoggedInUser.name} ref={register({ required: true })} placeholder="Your name"/>
+    <form className="ship-form" onSubmit={handleSubmit(onSubmit)}>
+
+      <input name="name" defaultValue={LoggedInUser.name} ref={register({ required: true })} placeholder="Your name" />
       {errors.name && <span className="error">Name is required</span>}
 
-      <input name="email" defaultValue={LoggedInUser.email} ref={register({ required: true })} placeholder="Your Email"/>
+      <input name="email" defaultValue={LoggedInUser.email} ref={register({ required: true })} placeholder="Your Email" />
       {errors.email && <span className="error">Email is required</span>}
 
-      <input name="address" ref={register({ required: true })} placeholder="Your Address"/>
+      <input name="address" ref={register({ required: true })} placeholder="Your Address" />
       {errors.address && <span className="error">Address is required</span>}
 
-      <input name="phone" ref={register({ required: true })} placeholder="Your Phone Number"/>
+      <input name="phone" ref={register({ required: true })} placeholder="Your Phone Number" />
       {errors.phone && <span className="error">Phone Number is required</span>}
       <input type="submit" />
     </form>
