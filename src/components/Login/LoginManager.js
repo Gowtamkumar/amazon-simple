@@ -22,6 +22,7 @@ export const HandelGoogleSignIn = () => {
                 email: email,
                 photo: photoURL
             }
+            setUserToken()
             return singnedIdUser;
 
         }).catch((error) => {
@@ -29,7 +30,13 @@ export const HandelGoogleSignIn = () => {
             console.log(error.message)
         });
 }
-
+const setUserToken = () => {
+    firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+       sessionStorage.setItem('userToken', idToken)
+      }).catch(function(error) {
+        // Handle error
+      });
+}
 export const HandelFacebooksignin = () => {
     const Facebookprovider = new firebase.auth.FacebookAuthProvider();
     return firebase.auth().signInWithPopup(Facebookprovider)
@@ -101,7 +108,7 @@ export const createUserWithEmailAndPassword = (name, email, password) => {
             const newUserinfo = {}
             newUserinfo.error = error.message;
             newUserinfo.success = false;
-            
+
         });
 }
 

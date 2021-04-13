@@ -1,10 +1,10 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyDDFvf5ZpjQkMhsiUh7p2MdHoP7cXG0m3Y",
-    authDomain: "simple-form-1ae07.firebaseapp.com",
-    projectId: "simple-form-1ae07",
-    storageBucket: "simple-form-1ae07.appspot.com",
-    messagingSenderId: "765476699478",
-    appId: "1:765476699478:web:fa84f9b3724c5c34e8aaf7"
+  apiKey: "AIzaSyB-Nt6ZNCLTJ2KeQXiBxm_OPept4RJ-e90",
+  authDomain: "simple-8e435.firebaseapp.com",
+  projectId: "simple-8e435",
+  storageBucket: "simple-8e435.appspot.com",
+  messagingSenderId: "280857078133",
+  appId: "1:280857078133:web:9a292a26a0148ee8694b3c"
   };
 
   export default firebaseConfig;
